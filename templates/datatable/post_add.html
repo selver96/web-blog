@@ -1,0 +1,39 @@
+{% extends "datatable/base.html"%}
+{% load datatable_tag %}
+{% block contents %}
+<main id="main">
+    <div class="form">
+        {% if errors %}
+        <div class="alert alert-danger" role="alert">
+            {{errors}}
+        </div>
+        {% endif %}
+        <p class="fs-1" style="text-align: center">Add Post</p>
+        <form action="/admin/add-post/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
+                <input name="title" type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="description"></textarea>
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">Category</label>
+                <select class="form-select" id="inputGroupSelect01" name="category">
+                    {% get_categories as categories %}
+                    {% for item in categories %}
+                    <option value={{item.id}}>{{item.name}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" type="file" id="formFile" name="upload" accept="image/*">
+            </div>
+            <p><button type="submit" class="btn btn-success">Add Post</button></p>
+        </form>
+    </div>
+</main>
+{% endblock contents %}

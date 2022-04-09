@@ -1,0 +1,30 @@
+{% extends "datatable/base.html"%}
+{% block contents %}
+<main id="main">
+    <div class="form">
+        {% if msg %}
+        <div class="alert alert-success" role="alert">
+            {{ msg }}
+        </div>
+        {% endif %}
+        {% if errors %}
+        {% for error in errors %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <p class="fs-1" style="text-align: center">Add Category </p>
+        <form action="/admin/add-category/" method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                <input type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default" name="name">
+            </div>
+            <p><button type="submit" class="btn btn-success">Add Category</button></p>
+        </form>
+    </div>
+</main>
+{% endblock contents %}

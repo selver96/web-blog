@@ -1,0 +1,33 @@
+.wrapper {}
+
+.btns > button {
+  margin-left: 20px;
+}
+
+.content {
+  margin: 50px 50px 50px 50px;
+}
+
+.add__btn{
+  margin-bottom: 20px;
+  float: right;
+}
+
+.link{
+  text-decoration: none;
+  color: rgb(12, 69, 12);
+}
+
+.link:hover{
+  color: rgb(23, 124, 23);
+}
+
+.form{
+  width: 500px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+body a{
+  text-decoration: none;
+}

@@ -1,0 +1,36 @@
+{% extends "datatable/base.html"%}
+
+{% block contents %}
+<main id="main">
+    <div class="add__btn"><a href="/admin/add-category/" type="button" class="btn btn-success">Add</a></div>
+    <table id="category" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>#</th>
+                <th>#</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody id="table-data">
+            {% for category in category_list %}
+            <tr>
+                <td data-search="{{category.id}}">{{category.id}}</td>
+                <td data-search="{{category.name}}">
+                    <a href="/admin/update-category/{{category.id}}/" class="link">{{category.name}}</a>
+                </td>
+                <td></td>
+                <td></td>
+                <td>
+                    <div class="btns">
+                        <a href="/admin/update-category/{{category.id}}/" class="btn btn-info">Edit</a>
+                        <a id={{category.id}} class="btn btn-danger deleteBtn">Sil</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock contents %}

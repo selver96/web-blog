@@ -1,0 +1,50 @@
+{% extends "blog/base.html"%}
+{% block contents %}
+{% if post %}
+{% for item in post  %}
+<div class="container">
+    <div class="row topspace">
+        <div class="col-sm-8 col-sm-offset-2">                
+            <article class="post">
+                <header class="entry-header">
+                     <div class="entry-meta"> 
+                         <span class="posted-on"><time class="entry-date published" date="2013-06-17">{{item.create_date}}</time></span>			
+                     </div> 
+                     <h1 class="entry-title"><a href="/blog/get-detail/{{post.id}}/">{{item.title}}</a></h1>
+                </header> 
+                <div class="entry-content"> 
+                    <p align="center"><img alt="" src="{{item.image}}"></p>
+                    <p>{{item.description}}</a></p>
+                </div> 
+            </article>
+            
+        </div> 
+    </div>
+</div>
+{% endfor %}
+{% else %}
+{% for item in post_list  %}
+  <div class="container">
+    <div class="row topspace">
+        <div class="col-sm-8 col-sm-offset-2">                
+            <article class="post">
+                <header class="entry-header">
+                     <div class="entry-meta"> 
+                         <span class="posted-on"><time class="entry-date published" date="2013-06-17">{{item.create_date}}</time></span>			
+                     </div> 
+                     <h1 class="entry-title"><a href="/blog/get-detail/{{item.id}}/">{{item.title}}</a></h1>
+                </header> 
+                <div class="entry-content"> 
+                    <p align="center"><img alt="" src="{{item.image}}"></p>
+                    <p>{{item.description}}</a></p>
+                </div> 
+            </article>
+            
+        </div> 
+    </div>
+</div>
+
+{% endfor %}
+{% endif%}
+
+{% endblock contents %}

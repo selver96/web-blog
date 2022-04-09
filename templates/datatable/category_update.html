@@ -1,0 +1,17 @@
+{% extends "datatable/base.html"%}
+{% block contents %}
+<main id="main">
+    <div class="form">
+        <p class="fs-1" style="text-align: center">Update Category</p>
+        <form action="/admin/update-category/{{category.id}}/" method="post">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+                <input type="text" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-default" value="{{ category.name }}" name="name">
+            </div>
+            <p><button type="submit" class="btn btn-success">Update Category</button></p>
+        </form>
+    </div>
+</main>
+{% endblock contents %}

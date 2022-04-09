@@ -1,0 +1,38 @@
+{% extends "datatable/base.html"%}
+
+{% block contents %}
+<main id="main">
+    <div class="add__btn"><a href="/admin/add-post/" type="button" class="btn btn-success">Add</a></div>
+    <table id="post" class="display" style="width:100%">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>#</th>
+            </tr>
+        </thead>
+        <tbody id="table-post">
+            {% for post in post_list %}
+            <tr>
+                <td>{{post.id}}</td>
+                <td><a href="/admin/update-post/{{post.id}}/" class="link">{{post.title}}</a></td>
+                <td data-search={{post.category.name}}>
+                    <p class="text-success">{{post.category.name}}</p>
+                </td>
+                <td>{{post.description}}</td>
+                <td> <img src="{{post.image}}" width="100" height="100"> </td>
+                <td>
+                    <div class="btns">
+                        <a href="/admin/update-post/{{post.id}}/" class="btn btn-info">Edit</a>
+                        <a id={{post.id}} class="btn btn-danger deleteBtnPost">Sil</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+{% endblock contents %}
